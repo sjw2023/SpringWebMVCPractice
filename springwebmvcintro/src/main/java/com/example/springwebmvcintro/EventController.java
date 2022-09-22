@@ -23,6 +23,9 @@ public class EventController {
     //  @GetMapping 구현에 @RequestMapping이 붙어 있음. 4.3부터 제공됨
     @GetMapping("/events")
     public String events(Model model) {
+        //  모델(이벤트)생성후에 여기에 직접 모델을 생성해서 사용해도 되지만
+        //  스프링 핵심기술인 서비스 클래스를 이용하여 제공할수도 있다.
+
         //model.addAllAttributes(attributeValues)
         return "events";
     }

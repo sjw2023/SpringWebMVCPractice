@@ -1,5 +1,6 @@
 package com.example.springwebmvcintro;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 //이벤트 목록을 보여주는 컨트롤러
 @Controller //MVC패턴에서 컨트롤러 역할을 하게 하는 어노테이션
 public class EventController {
+
+    //  서비스 클래스 빈 주입
+    @Autowired
+    EventService eventService;
 
     //  웹 브라우져에서 /events로 httpMethod.GET 요청이 들어올때
     //  Model : 자바에 있는 맵 콜렉션, 여기에 우리가 화면에 전달할 모델을 담으면 됨 
@@ -27,6 +32,12 @@ public class EventController {
         //  스프링 핵심기술인 서비스 클래스를 이용하여 제공할수도 있다.
         //model.addAllAttributes(attributeValues)
         
+        //  이벤트서비스 빈 주입후 사용하기 이벤트받아와서 모델에 담아주기
+        model.addAttribute("events", eventService.getEvents());
+        //  여기 리턴문이 리턴하는것은 뷰의 이름이다. 뷰를 찾을 키워드를 리턴하는 것이다.
+        //  즉, 뷰를 만들어야한다. 뷰를 통해 모델을 보여줘야하므로.
+        //  이 예제는 뷰생성에 타임 리프를 사용할것이다.
+        //  동적인뷰, 스프링에선 resources/templates에 만든다
         return "events";
     }
     

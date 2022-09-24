@@ -23,7 +23,7 @@ import lombok.Setter;
 @Builder @NoArgsConstructor @AllArgsConstructor
 public class Event {
     private String name;
-    private int limitOfEnrollmentl;
+    private int limitOfEnrollment;
     private LocalDateTime startDateTime;
     private LocalDateTime  endDateTime;
 }

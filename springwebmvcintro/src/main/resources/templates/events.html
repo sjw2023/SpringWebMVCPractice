@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- 타임리프 사용을 위한 네임스페이스 정의-->
+<html lang="en" xmlns:"http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Title </title>
+</head>
+<body>
+    <h1> 이벤트 목록 <h1>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>참가 인원</th>
+            <th>시작</th>
+            <th>종료</th>
+        </tr>
+        <!-- 이벤츠에 있는 변수들을 이벤트로 참조 하겠다.-->
+        <!--뷰로 전달된 모델의 데이타를 어떻게 보여줄지 처리 하는것 -->
+        <tr th:each="event: ${events}">
+            <!--td 로 th에 있는 값을 텍스트로 참조 할거니까-->
+            <!--뒤의 이벤트 이름 은 타임리프가 적용안됐을때의 예시를 보여줌-->
+            <td th:text="${event.name}">이벤트 이름</td>
+            <td th:text="${event.limitOfEnrollment}">100</td>
+            <td th:text="${event.startDateTime}">2019년 1월 10일 오전 10시</td>
+            <td th:text="${event.endDateTime}">2019년 1월 10일 오전 12시</td>
+        </tr>
+    </table>
+</body>
+</html>

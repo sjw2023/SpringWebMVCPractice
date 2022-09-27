@@ -7,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -24,9 +23,18 @@ public class SampleControllerTest {
     //     .andExpect(content().string("hello"));//결과 비교
     // }
     //유알엘 패스 버라이어블 테스트
+    // @Test
+    // public void hello() throws Exception {
+    //     this.mockMvc.perform(get("/hello/joowon"))//요청
+    //     .andDo(print())//결과 출력
+    //     .andExpect(content().string("hello joowon"));//결과 비교
+    // }
+
+    //리퀘스트 파라미터 포매터 테스트
     @Test
     public void hello() throws Exception {
-        this.mockMvc.perform(get("/hello/joowon"))//요청
+        this.mockMvc.perform(get("/hello")
+        .param("name", "joowon"))//파라미터 가지고 요청
         .andDo(print())//결과 출력
         .andExpect(content().string("hello joowon"));//결과 비교
     }

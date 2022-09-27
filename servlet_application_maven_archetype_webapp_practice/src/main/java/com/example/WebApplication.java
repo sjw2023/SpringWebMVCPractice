@@ -23,8 +23,5 @@ public class WebApplication implements WebApplicationInitializer{
         ServletRegistration.Dynamic app = servletContext.addServlet("app", dispatcherServlet);
         //매핑
         app.addMapping("/app/*");
-
-
     }
-    
 }

@@ -62,3 +62,6 @@
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:19:52:48 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/sample HTTP/1.1" 404 949 http-bio-8080-exec-1 248
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:19:53:56 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/sample HTTP/1.1" 200 68 http-bio-8080-exec-1 724
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:20:08:22 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/simple HTTP/1.1" 200 72 http-bio-8080-exec-1 660
+0:0:0:0:0:0:0:1 - - [27/Sep/2022:22:07:56 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/simple HTTP/1.1" 404 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [27/Sep/2022:22:08:00 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/simple HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [27/Sep/2022:22:08:20 +0900] "GET /spring_mvc_config/app/simple HTTP/1.1" 200 72 http-bio-8080-exec-4 645

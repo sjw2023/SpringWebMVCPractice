@@ -3,16 +3,15 @@ package com.example;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-import javax.sql.rowset.serial.SerialException;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class WebApplication implements WebApplicationInitializer{
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException{
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         //설정 파일 설정
         context.register( WebConfig.class );
         context.refresh();

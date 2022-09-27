@@ -8,7 +8,8 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(useDefaultFilters = false, includeFilters = @ComponentScan.Filter(Controller.class))
+//Dispatcher 서블릿의 계층 구조를 더이상 사용하지 않을것임.
+@ComponentScan //(useDefaultFilters = false, includeFilters = @ComponentScan.Filter(Controller.class))
 public class WebConfig {
     @Bean
     public ViewResolver viewResolver(){

@@ -21,7 +21,7 @@ public class HelloServlet extends HttpServlet{
         System.out.println("doGet");
 
         //컨텍스트 로더 리스너가 등록한 서블릿 컨텍스트에 추가한 애플리케이션 컨텍스트를 컨텍스트.애트리뷰트(등록한 이름을 통해 불러오는 코드)
-        ApplicationContext context =(ApplicationContext) getServletContext().getAttribute(WebApplicationContext);
+        ApplicationContext context =(ApplicationContext) getServletContext().getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
         //애플리케이션 컨텍스트에서 빈을 꺼내오는 코드
         HelloService helloService = context.getBean(HelloService.class);
         

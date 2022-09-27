@@ -12,6 +12,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>com.example.AppConfig</param-value>
   </context-param>
+  <!-- 
   <filter>
     <filter-name>myFilter</filter-name>
     <filter-class>com.example.MyFilter</filter-class>
@@ -20,6 +21,7 @@
     <filter-name>myFilter</filter-name>
     <servlet-name>hello</servlet-name>
   </filter-mapping>
+  -->
 <!--
   <listener>
     <listener-class>com.example.MyListener</listener-class>
@@ -28,7 +30,7 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  
+  <!-- 
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>com.example.HelloServlet</servlet-class>
@@ -37,5 +39,6 @@
     <servlet-name>hello</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-
+  -->
+  
 </web-app>

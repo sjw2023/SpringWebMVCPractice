@@ -1,3 +1,4 @@
+/** 포매터를 빈으로 등록하여 더이상 피료없음.
 package com.example.fomatter_config;
 
 import org.springframework.context.annotation.Configuration;
@@ -12,3 +13,4 @@ public class WebConfig implements WebMvcConfigurer{
         registry.addFormatter(new PersonFormatter());
     }
 }
+**/

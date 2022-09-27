@@ -12,6 +12,8 @@ public class WebApplication implements WebApplicationInitializer{
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException{
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        //  @SpringWebMvc사용을 위한 서블릿 컨텍스트 설정
+        context.setServletContext(servletContext);
         //설정 파일 설정
         context.register( WebConfig.class );
         context.refresh();

@@ -13,11 +13,14 @@
     <filter-name>myFilter</filter-name>
     <servlet-name>hello</servlet-name>
   </filter-mapping>
-
+<!--
   <listener>
     <listener-class>com.example.MyListener</listener-class>
   </listener>
-
+-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>com.example.HelloServlet</servlet-class>

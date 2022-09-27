@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>hello</servlet-name>
-    <sevlet-class>com.example.servlet_application_maven_archetype_webapp_practice.HelloSevlet</sevlet-class>
+    <servlet-class>com.example.HelloSevlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>hello</servlet-name>

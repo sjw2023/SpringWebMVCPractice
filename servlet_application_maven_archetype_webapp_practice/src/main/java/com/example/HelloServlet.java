@@ -28,6 +28,7 @@ public class HelloServlet extends HttpServlet{
 
         //super.doGet(req, resp);
     }
+    //서블릿 컨텍스트에서 name 이라는 어트리뷰트를 읽어 오는 메소드.
     private Object getName(){
         return getServletContext().getAttribute("name");
     }

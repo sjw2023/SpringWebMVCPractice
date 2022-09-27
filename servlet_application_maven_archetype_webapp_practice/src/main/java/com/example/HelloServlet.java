@@ -1,5 +1,7 @@
 package com.example;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +14,7 @@ public class HelloServlet extends HttpServlet{
     }
     //Get요청 처리
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res){
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException{
         System.out.println("doGet");
         res.getWriter().println("<html>");
         res.getWriter().println("<head>");

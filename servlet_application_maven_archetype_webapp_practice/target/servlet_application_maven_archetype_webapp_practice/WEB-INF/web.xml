@@ -4,4 +4,13 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>hello</servlet-name>
+    <sevlet-class>com.example.servlet_application_maven_archetype_webapp_practice.HelloSevlet</sevlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+
 </web-app>

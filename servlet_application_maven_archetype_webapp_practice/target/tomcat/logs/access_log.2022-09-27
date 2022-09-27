@@ -61,3 +61,4 @@
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:19:52:00 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/sample HTTP/1.1" 404 949 http-bio-8080-exec-1 269
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:19:52:48 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/sample HTTP/1.1" 404 949 http-bio-8080-exec-1 248
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:19:53:56 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/sample HTTP/1.1" 200 68 http-bio-8080-exec-1 724
+0:0:0:0:0:0:0:1 - - [27/Sep/2022:20:08:22 +0900] "GET /servlet_application_maven_archetype_webapp_practice/app/simple HTTP/1.1" 200 72 http-bio-8080-exec-1 660

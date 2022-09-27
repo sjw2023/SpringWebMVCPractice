@@ -24,7 +24,8 @@ public class HelloController {
 
     @GetMapping("/sample")
     public String sample(){
-        return "/WEB-INF/sample.jsp";
+        // 뷰 리졸버 생성후 아래같이 변경 가능
+        return "sample"; //   "/WEB-INF/sample.jsp";
     }
 
     

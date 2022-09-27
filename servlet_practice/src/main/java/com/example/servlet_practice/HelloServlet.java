@@ -1,5 +1,7 @@
 package com.example.servlet_practice;
 
-public class HelloServlet extends HttpSer{
+import javax.servlet.http.HttpServlet;
+
+public class HelloServlet extends HttpServlet{
     
 }

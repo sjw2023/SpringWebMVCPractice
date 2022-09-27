@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+
 public class HelloServlet extends HttpServlet{
     @Override
     public void init() throws ServletException{
@@ -16,12 +19,22 @@ public class HelloServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException{
         System.out.println("doGet");
+
+        //컨텍스트 로더 리스너가 등록한 서블릿 컨텍스트에 추가한 애플리케이션 컨텍스트를 컨텍스트.애트리뷰트(등록한 이름을 통해 불러오는 코드)
+        ApplicationContext context =(ApplicationContext) getServletContext().getAttribute(WebApplicationContext);
+        //애플리케이션 컨텍스트에서 빈을 꺼내오는 코드
+        HelloService helloService = context.getBean(HelloService.class);
+        
+
         res.getWriter().println("<html>");
         res.getWriter().println("<head>");
         res.getWriter().println("<body>");
         // res.getWriter().println("<h1>hello Servlet</h1>");
         // res.getWriter().println("<h1>hello, " + getServletContext().getAttribute("name") + "</h1>");
-        res.getWriter().println("<h1>Hello, " + getName() + "</h1>");
+        //서블릿에서 이름을 가져오는 코드
+        // res.getWriter().println("<h1>Hello, " + getName() + "</h1>");
+        // 빈에서 이름을 가져오는 코드
+        res.getWriter().println("<h1>Hello, " + helloService.getName() + "</h1>");
         res.getWriter().println("</body>");
         res.getWriter().println("</head>");
         res.getWriter().println("</html>");

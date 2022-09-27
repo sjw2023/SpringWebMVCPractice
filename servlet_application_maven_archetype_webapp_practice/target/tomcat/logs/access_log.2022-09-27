@@ -37,3 +37,4 @@
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:15:23:57 +0900] "GET /servlet_application_maven_archetype_webapp_practice/hello HTTP/1.1" 500 2762 http-bio-8080-exec-10 1
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:15:24:17 +0900] "GET /servlet_application_maven_archetype_webapp_practice/hello HTTP/1.1" 500 3258 http-bio-8080-exec-1 30
 0:0:0:0:0:0:0:1 - - [27/Sep/2022:15:25:47 +0900] "GET /servlet_application_maven_archetype_webapp_practice/hello HTTP/1.1" 500 3466 http-bio-8080-exec-1 35
+0:0:0:0:0:0:0:1 - - [27/Sep/2022:15:27:29 +0900] "GET /servlet_application_maven_archetype_webapp_practice/hello HTTP/1.1" 200 68 http-bio-8080-exec-1 31

@@ -17,11 +17,17 @@ public class SampleControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    // @Test
+    // public void hello() throws Exception {
+    //     this.mockMvc.perform(get("/hello"))//요청
+    //     .andDo(print())//결과 출력
+    //     .andExpect(content().string("hello"));//결과 비교
+    // }
+    //유알엘 패스 버라이어블 테스트
     @Test
     public void hello() throws Exception {
-        this.mockMvc.perform(get("/hello"))//요청
+        this.mockMvc.perform(get("/hello/joowon"))//요청
         .andDo(print())//결과 출력
-        .andExpect(content().string("hello"));//결과 비교
+        .andExpect(content().string("hello joowon"));//결과 비교
     }
-    
 }

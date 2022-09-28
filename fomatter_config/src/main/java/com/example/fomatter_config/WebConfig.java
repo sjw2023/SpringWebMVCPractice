@@ -35,4 +35,5 @@ public class WebConfig implements WebMvcConfigurer{
         .addResourceLocations("classpath:/mobile/") //  클래스패스 루트 아래 있는 모바일
         .setCacheControl(CacheControl.maxAge(10,TimeUnit.MINUTES)); // 응답에 캐싱 전략을 사용, 10분동안 유지
     }
+ 
 }

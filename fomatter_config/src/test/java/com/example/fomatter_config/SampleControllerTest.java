@@ -7,8 +7,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -85,5 +88,37 @@ public class SampleControllerTest {
         .andExpect(status().isOk())
         .andExpect(content().string(Matchers.containsString("hello mobile")))
         .andExpect(header().exists(HttpHeaders.CACHE_CONTROL)); //캐싱 전략을 사용하는지 체크
+    }
+    //스트링 컨버터 테스트 코드
+    @Test
+    public void stringMessage() throws Exception{
+        this.mockMvc.perform(get("/message").content("hello"))// 바디에 hello담아 요청을 보냄
+        .andDo(print())// 결과 출력
+        .andExpect(status().isOk())//200 인지 확인
+        .andExpect(content().string(Matchers.containsString("hello")))//응답에 그대로 hello 있는지 확인
+        ;
+    }
+    //제이슨 컨버터 테스트 코드
+
+    //잭슨이 제공하는 오브젝트 매퍼를 사용하여 제이슨 문자열을 만들기 위해 사용
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @Test
+    public void jsonMessage() throws Exception{
+        //제이슨 문자열로 만들어줄 퍼슨 객체
+        Person person = new Person();
+        person.setId(2019);
+        person.setName("joowon");
+        //제이슨 문자열로 변경
+        String jsonString = objectMapper.writeValueAsString(person);
+
+        this.mockMvc.perform(get("/jsonMessage")
+                                .contentType(MediaType.APPLICATION_JSON) // 요청에 컨텐츠 타입을 입력해 컨버터를 사용하도록 하기 위해.
+                                .accept(MediaType.APPLICATION_JSON) //  응답으로 어떤 컨텐츠 타입을 허욜할 것인지 명시.
+                                .content(jsonString))// 바디에 제이슨 문자열 담아 요청
+        .andDo(print())// 결과 출력
+        .andExpect(status().isOk())//200 인지 확인 
+        ;
     }
 }

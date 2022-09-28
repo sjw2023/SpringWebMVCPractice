@@ -55,8 +55,6 @@ public class SampleControllerTest {
         Person person = new Person();
         person.setName("joowon");
         Person savedPerson = personRepository.save(person);
-        System.out.println(person.getName());
-        System.out.println(person.getId());
 
         this.mockMvc.perform(get("/hello")
         .param("id", savedPerson.getId().toString()))//파라미터 가지고 요청

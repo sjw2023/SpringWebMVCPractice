@@ -32,7 +32,6 @@ public class SampleController {
       //리퀘스트 파라미터로 ID를 사용하도록 수정
       @GetMapping("/hello")
       public String hello(@RequestParam("id") Person person){
-            System.out.println(person.getId());
           return "hello " + person.getName();
       }
 }

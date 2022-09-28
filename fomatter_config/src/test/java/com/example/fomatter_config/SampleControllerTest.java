@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 
 import org.hamcrest.Matcher;
@@ -119,6 +121,8 @@ public class SampleControllerTest {
                                 .content(jsonString))// 바디에 제이슨 문자열 담아 요청
         .andDo(print())// 결과 출력
         .andExpect(status().isOk())//200 인지 확인 
+        .andExpect(jsonPath("$.id").value(2019)) // 제이슨 출력결과 비교
+        .andExpect(jsonPath("$.name").value("joowon"))
         ;
     }
 }

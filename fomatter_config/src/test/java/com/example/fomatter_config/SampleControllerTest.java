@@ -12,6 +12,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 @RunWith(SpringRunner.class)
 // @WebMvcTest
 //포매터를 빈으로 등록하기위해
@@ -60,5 +64,13 @@ public class SampleControllerTest {
         .param("id", savedPerson.getId().toString()))//파라미터 가지고 요청
         .andDo(print())//결과 출력
         .andExpect(content().string("hello joowon"));//결과 비교
+    }
+    //인덱스 테스트 코드
+    @Test
+    public void helloStatic() throws Exception{
+        this.mockMvc.perform(get("/index.html"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andExpect(content().string(Matchers.containsString("hello index")));
     }
 }

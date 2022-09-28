@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,6 +14,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
@@ -72,5 +75,15 @@ public class SampleControllerTest {
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(content().string(Matchers.containsString("hello index")));
+    }
+
+    //헬로 모바일 테스트 코드
+    @Test
+    public void helloMobile() throws Exception{
+        this.mockMvc.perform(get("/mobile/index.html"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andExpect(content().string(Matchers.containsString("hello mobile")))
+        .andExpect(header().exists(HttpHeaders.CACHE_CONTROL)); //캐싱 전략을 사용하는지 체크
     }
 }

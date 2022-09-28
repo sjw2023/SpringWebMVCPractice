@@ -17,7 +17,11 @@ public class WebConfig implements WebMvcConfigurer{
     //  인터셉터 등록
     @Override
     public void addInterceptors( InterceptorRegistry registry ){
-        registry.addInterceptor(new GreetingIntercaptor());
-        registry.addInterceptor(new AnotherInterceptor());
+        registry.addInterceptor(new GreetingIntercaptor()).order(1);
+        registry.addInterceptor(new AnotherInterceptor())
+        //  패스 패턴
+        .addPathPatterns("/hi")
+        //  우선순위
+        .order(-1);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.oxm.Marshaller;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -18,8 +19,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.io.StringWriter;
+
+import javax.xml.transform.Result;
+import javax.xml.transform.stream.StreamResult;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 
 import org.hamcrest.Matcher;
@@ -123,6 +131,33 @@ public class SampleControllerTest {
         .andExpect(status().isOk())//200 인지 확인 
         .andExpect(jsonPath("$.id").value(2019)) // 제이슨 출력결과 비교
         .andExpect(jsonPath("$.name").value("joowon"))
+        ;
+    }
+
+    //빈으로 등록한 마셜러 객체 주입
+    @Autowired
+    Marshaller marshaller;
+
+    @Test
+    public void xmlMessage() throws Exception{
+        //XML 문자열로 만들어줄 퍼슨 객체
+        Person person = new Person();
+        person.setId(2019);
+        person.setName("joowon");
+        //XML 문자열로 변경
+        StringWriter stringWriter = new StringWriter();
+        Result result = new StreamResult(stringWriter);
+        marshaller.marshal(person, result);
+        String xmlString = stringWriter.toString();
+
+        this.mockMvc.perform(get("/jsonMessage")
+                                .contentType(MediaType.APPLICATION_XML) // 요청에 컨텐츠 타입을 입력해 컨버터를 사용하도록 하기 위해.
+                                .accept(MediaType.APPLICATION_XML) //  응답으로 어떤 컨텐츠 타입을 허욜할 것인지 명시.
+                                .content(xmlString))// 바디에 제이슨 문자열 담아 요청
+        .andDo(print())// 결과 출력
+        .andExpect(status().isOk())//200 인지 확인 
+        .andExpect(xpath("person/name").string("joowon"))
+        .andExpect(xpath("person/id").string("2019"))
         ;
     }
 }

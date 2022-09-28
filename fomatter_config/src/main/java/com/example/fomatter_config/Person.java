@@ -1,6 +1,15 @@
 package com.example.fomatter_config;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Person {
+    // 사람 식별을 위한 ID필드 추가
+    @Id @GeneratedValue
+    private Integer id;
+
     private String name;
 
     public String getName() {
@@ -11,11 +20,13 @@ public class Person {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-            " name='" + getName() + "'" +
-            "}";
+    public Integer getId() {
+        return this.id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
+
+   

@@ -24,9 +24,15 @@ public class SampleController {
     //     return "hello " + person.getName();
     // }
 
-    //리퀘스트 파라미터 사용하도록 수정
-    @GetMapping("/hello")
-    public String hello(@RequestParam("name") Person person){
-        return "hello " + person.getName();
-    }
+    // //리퀘스트 파라미터 사용하도록 수정
+    // @GetMapping("/hello")
+    // public String hello(@RequestParam("name") Person person){
+    //     return "hello " + person.getName();
+    // }
+      //리퀘스트 파라미터로 ID를 사용하도록 수정
+      @GetMapping("/hello")
+      public String hello(@RequestParam("id") Person person){
+            System.out.println(person.getId());
+          return "hello " + person.getName();
+      }
 }

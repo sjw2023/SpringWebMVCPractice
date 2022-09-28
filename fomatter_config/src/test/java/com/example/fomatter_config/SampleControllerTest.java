@@ -36,10 +36,30 @@ public class SampleControllerTest {
     // }
 
     //리퀘스트 파라미터 포매터 테스트
+    // @Test
+    // public void hello() throws Exception {
+    //     this.mockMvc.perform(get("/hello")
+    //     .param("name", "joowon"))//파라미터 가지고 요청
+    //     .andDo(print())//결과 출력
+    //     .andExpect(content().string("hello joowon"));//결과 비교
+    // }
+
+    //ID를 사용하여 테스트하도록 수정
+    //생성한 리파지토리 주입
+    @Autowired
+    PersonRepository personRepository;
+
     @Test
     public void hello() throws Exception {
+        //퍼슨 객체에 정보 저장
+        Person person = new Person();
+        person.setName("joowon");
+        Person savedPerson = personRepository.save(person);
+        System.out.println(person.getName());
+        System.out.println(person.getId());
+
         this.mockMvc.perform(get("/hello")
-        .param("name", "joowon"))//파라미터 가지고 요청
+        .param("id", savedPerson.getId().toString()))//파라미터 가지고 요청
         .andDo(print())//결과 출력
         .andExpect(content().string("hello joowon"));//결과 비교
     }

@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -23,10 +24,17 @@ public class SampleControllerTest {
     @Test
     public void helloTest() throws Exception{
         //헬로라는 겟 요청을 테스트
-        mockMvc.perform(get("/hello"))
+        // mockMvc.perform(get("/hello"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // .andExpect(content().string("hello"))
+        // ;
+
+        //GET메소드로 핸들러 매핑이후 일부러 틀린 요청을 보냈을때 테스트
+        //응답으로 405를 받는지 테스트
+        mockMvc.perform(put("/hello"))
         .andDo(print())
-        .andExpect(status().isOk())
-        .andExpect(content().string("hello"))
+        .andExpect(status().isMethodNotAllowed())
         ;
     }
 }

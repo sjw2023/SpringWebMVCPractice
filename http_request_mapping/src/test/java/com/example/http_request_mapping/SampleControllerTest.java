@@ -32,9 +32,21 @@ public class SampleControllerTest {
 
         //GET메소드로 핸들러 매핑이후 일부러 틀린 요청을 보냈을때 테스트
         //응답으로 405를 받는지 테스트
+        // mockMvc.perform(put("/hello"))
+        // .andDo(print())
+        // .andExpect(status().isMethodNotAllowed())
+        // ;
+        //GET메소드로 핸들러 매핑이후 올바른 요청을 보냈을때 테스트
+        //응답으로 200을 받는지 테스트
+        mockMvc.perform(get("/hello"))
+        .andDo(print())
+        .andExpect(status().isOk())
+        ;
+        //GET, put메소드로 핸들러 매핑이후 올바른 요청을 보냈을때 테스트
+        //응답으로 200을 받는지 테스트
         mockMvc.perform(put("/hello"))
         .andDo(print())
-        .andExpect(status().isMethodNotAllowed())
+        .andExpect(status().isOk())
         ;
     }
 }

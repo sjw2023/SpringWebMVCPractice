@@ -12,6 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.handler;;
 
 //Junit 사용시 스프링에서 제공하는 스프링러너를 사용하여 테스트, 좀더 효율적으로 실행이 가능해짐
 @RunWith(SpringRunner.class)
@@ -38,15 +39,40 @@ public class SampleControllerTest {
         // ;
         //GET메소드로 핸들러 매핑이후 올바른 요청을 보냈을때 테스트
         //응답으로 200을 받는지 테스트
-        mockMvc.perform(get("/hello"))
-        .andDo(print())
-        .andExpect(status().isOk())
-        ;
-        //GET, put메소드로 핸들러 매핑이후 올바른 요청을 보냈을때 테스트
-        //응답으로 200을 받는지 테스트
-        mockMvc.perform(put("/hello"))
-        .andDo(print())
-        .andExpect(status().isOk())
-        ;
+        // mockMvc.perform(get("/hello"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // ;
+        // //GET, put메소드로 핸들러 매핑이후 올바른 요청을 보냈을때 테스트
+        // //응답으로 200을 받는지 테스트
+        // mockMvc.perform(put("/hello"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // ;
+
+        // //요청 식별자 테스트 코드
+        // mockMvc.perform(put("/hello5"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // ;
+        //요청 식별자 테스트 코드
+        // mockMvc.perform(put("/hello/ㅁㄴㅇㄹ~~~/multi"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // ;
+        //정규식 테스트 코드
+        // mockMvc.perform(put("/hello/joowon"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // ;
+
+        //추가적인 유용한 테스트 코드
+          //정규식 테스트 코드
+          mockMvc.perform(put("/hello/joowon"))
+          .andDo(print())
+          .andExpect(status().isOk())
+          .andExpect(handler().handlerType(SampleController.class)) //올바른 컨트롤러가 핸들링 하는지
+          .andExpect(handler().methodName("hello")) //핸들러 이름 체크
+          ;
     }
 }

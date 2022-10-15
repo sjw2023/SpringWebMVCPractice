@@ -114,13 +114,18 @@ public class SampleControllerTest {
         // .andExpect(handler().handlerType(SampleController.class)) //올바른 컨트롤러가 핸들링 하는지
         // .andExpect(handler().methodName("hello")) //핸들러 이름 체크
         // ;
-          //헤더 파라미터 매핑 테스트 코드, 파라미터 값이 name으로 오는지 테스트
-          mockMvc.perform(put("/hello")
-          .param("name", "joowon"))
+        //   //헤더 파라미터 매핑 테스트 코드, 파라미터 값이 name으로 오는지 테스트
+        //   mockMvc.perform(put("/hello")
+        //   .param("name", "joowon"))
+        // .andDo(print())
+        // .andExpect(status().isOk())
+        // .andExpect(handler().handlerType(SampleController.class)) //올바른 컨트롤러가 핸들링 하는지
+        // .andExpect(handler().methodName("hello")) //핸들러 이름 체크
+        // ;
+        //커스텀 어노테이션 테스트 코드
+        mockMvc.perform(get("/hello"))
         .andDo(print())
         .andExpect(status().isOk())
-        .andExpect(handler().handlerType(SampleController.class)) //올바른 컨트롤러가 핸들링 하는지
-        .andExpect(handler().methodName("hello")) //핸들러 이름 체크
         ;
     }
 }

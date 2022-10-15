@@ -159,15 +159,21 @@ public class SampleController {
     // @RequestMapping( value = "/hello", 
     // params = "name")
 
-     //name이라는 파라미터가 joowon이어야 한다
-     @RequestMapping( value = "/hello", 
-     params = "name=joowon")
+    //  //name이라는 파라미터가 joowon이어야 한다
+    //  @RequestMapping( value = "/hello", 
+    //  params = "name=joowon")
 
-    //리턴 문자열을 응담으로 보내고 싶을때 붙이는 어노테이션
+    // //리턴 문자열을 응담으로 보내고 싶을때 붙이는 어노테이션
+    // @ResponseBody
+
+    // public String hello(){
+    // //리턴에 해당하는 뷰를 찾아가는 핸들러
+    // return "hello";
+    // }
+
+    @GetHelloMapping
     @ResponseBody
-
     public String hello(){
-    //리턴에 해당하는 뷰를 찾아가는 핸들러
-    return "hello";
+        return "hello";
     }
 }
